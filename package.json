@@ -1,0 +1,15 @@
+{
+  "name": "express-cookieshop",
+  "version": "1.0.0",
+  "description": "I follow [this tutorial](https://codecookies.xyz/express-tutorial/v1) to create an simple cookieshop app. This project is beginner-friendly and very easy to follow along.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
