@@ -15,6 +15,10 @@ app.post('/contact', (request, response) => {
     response.send('Thank you for getting in touch with us!')
 })
 
+app.get('/about', (request, response) => {
+    response.send('You can find all sorts of delicacies in our shop. Stay tuned for new items on our menu!')
+})
+
 app.listen(PORT , () => {
     console.log(`Started server on ${PORT}`)
 })
