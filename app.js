@@ -6,6 +6,7 @@ const PORT = 3000
 
 app.use(logger)
 app.use('/assets', express.static('public'))
+app.use(express.urlencoded({extended: true}))
 
 app.get('/', (request, response) => {
     response.send('Welcome to my 🍪 Cookieshop!')
@@ -16,6 +17,7 @@ app.get('/contact', (request, response) => {
 })
 
 app.post('/contact', (request, response) => {
+    console.log('Contact form submission: ', request.body)
     response.send('Thank you for getting in touch with us!')
 })
 
