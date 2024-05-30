@@ -32,6 +32,10 @@ app.get('/calculate', (request, response) => {
     response.send(`The average of number ${num1} and ${num2} is ${average}.`)
 })
 
+app.get('/cookies', (request,response) => {
+    response.send('Great cookies here!')
+})
+
 app.get('/cookies/:slug', (request, response) => {
     const cookiesId = request.params.slug
     response.send(`You chose the cookie with the ID ${cookiesId}.`)
