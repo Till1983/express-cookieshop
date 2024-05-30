@@ -11,7 +11,7 @@ app.use('/assets', express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
 app.get('/', (request, response) => {
-    response.send('<h1>Welcome!</h1><p>Welcome to my 🍪 Cookieshop!</p>')
+    response.render('index')
   })
 
 app.get('/contact', (request, response) => {
