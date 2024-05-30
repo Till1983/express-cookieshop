@@ -2,16 +2,7 @@
 <html lang="en">
     <%- include('../includes/head', {title: 'Shop | Cookieshop'}) %>
 <body>
-  <header>
-    <h1>Cookieshop</h1>
-
-    <nav>
-      <a href="/">Home</a>&nbsp;|&nbsp;
-      <a href="/about">About</a>&nbsp;|&nbsp;
-      <a href="/cookies">Shop</a>&nbsp;|&nbsp;
-      <a href="/contact">Contact</a>
-    </nav>
-  </header>
+    <%- include('../includes/header') %>
 
   <main>
     <p>Our current offering:</p>
@@ -21,8 +12,6 @@
     </ul>
   </main>
 
-  <footer>
-    Made with 🍪 by Codecookies
-  </footer>
+  <%- include('../includes/footer') %>
 </body>
 </html>
