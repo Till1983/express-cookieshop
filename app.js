@@ -25,6 +25,11 @@ app.get('/about', (request, response) => {
     response.send('You can find all sorts of delicacies in our shop. Stay tuned for new items on our menu!')
 })
 
+app.get('/search', (request, response) => {
+    const query = request.query.q
+    response.send(`You searched for: ${query}`)
+})
+
 app.get('/hello', (request, response) => {
     const name = 'Joe'
     const fakeVisitorNumber = '340'
