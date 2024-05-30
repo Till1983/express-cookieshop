@@ -5,7 +5,7 @@ const app = express()
 const PORT = 3000
 
 app.use(logger)
-app.use(express.static('public'))
+app.use('/assets', express.static('public'))
 
 app.get('/', (request, response) => {
     response.send('Welcome to my 🍪 Cookieshop!')
