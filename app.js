@@ -11,7 +11,8 @@ app.use('/assets', express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
 app.get('/', (request, response) => {
-    response.render('index')
+    const cookiesInStock = 400
+    response.render('index', {cookiesInStock: cookiesInStock})
   })
 
 app.get('/contact', (request, response) => {
