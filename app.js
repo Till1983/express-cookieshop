@@ -37,6 +37,7 @@ app.get('/calculate', (request, response) => {
 })
 
 app.get('/cookies', (request,response) => {
+    console.log(request.query)
     response.send('Great cookies here!')
 })
 
