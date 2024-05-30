@@ -1,4 +1,5 @@
 import express, { request, response } from 'express'
+import { logger } from './middlewares/logger'
 
 const app = express()
 const PORT = 3000
