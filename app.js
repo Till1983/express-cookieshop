@@ -48,14 +48,7 @@ app.get('/calculate', (request, response) => {
 
 app.get('/cookies', (request,response) => {
     console.log(request.query)
-    response.send(`
-        <h1>Cookies</h1>
-        <p>Here you will find all the cookies!"</p>
-        <ul>
-            <li>Chocolate Chip</li>
-            <li>Banana</li>
-        </ul>
-    `)
+    response.render('cookies/index')
 })
 
 app.get('/cookies/:slug', (request, response) => {
