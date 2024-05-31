@@ -56,6 +56,8 @@ app.get('/cookies/:slug', (request, response) => {
     response.send(`<h3>You chose the cookie with the ID ${cookiesId}.</h3>`)
 })
 
+export { app }
+
 app.listen(PORT , () => {
     console.log(`Started server on ${PORT}`)
 })
