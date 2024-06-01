@@ -70,9 +70,16 @@ describe('GET /cookies', () => {
 });
 
 describe('GET /cookies/:slug', () => {
-  it('should return the chosen cookie id', async () => {
-    const response = await request(app).get('/cookies/123');
+  it('should return the detail page of the respective cookie', async () => {
+    const response = await request(app).get('/cookies/banana');
     expect(response.status).to.equal(200);
-    expect(response.text).to.contain('You chose the cookie with the ID 123');
+    expect(response.text).to.contain('Price:');
+    expect(response.text).to.contain('A cookie with wonderful banana flavour')
+  });
+
+  it('should return a 404 page for non-existing cookies', async () => {
+    const response = await request(app).get('/cookies/non-existing');
+    expect(response.status).to.equal(404);
+    expect(response.text).to.contain('Cookie not found')
   });
 });
