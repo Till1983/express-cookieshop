@@ -10,6 +10,11 @@ app.use(logger)
 app.use('/assets', express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
+const cookieOffering = [
+    { name: 'Chocolate Chip', slug: 'chocolate-chip', isInStock: true},
+    { name: 'Banana', slug: 'banana', isInStock: false}
+]
+
 app.get('/', (request, response) => {
     const cookiesInStock = 400
     response.render('index', {cookiesInStock: cookiesInStock})
@@ -48,7 +53,7 @@ app.get('/calculate', (request, response) => {
 
 app.get('/cookies', (request,response) => {
     console.log(request.query)
-    response.render('cookies/index')
+    response.render('cookies/index', { cookieOffering: cookieOffering })
 })
 
 app.get('/cookies/:slug', (request, response) => {
