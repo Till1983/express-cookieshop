@@ -7,7 +7,7 @@
     <main>
       <p>Our current offering:</p>
       <ul>
-        <% cookieOffering.forEach(offering => { %>
+        <% cookieOfferings.forEach(offering => { %>
           <li>
             <% if(offering.isInStock) { %> 
               <a href="/cookies/<%= offering.slug %>"><%= offering.name %>: <%= readablePrice(offering.priceInCents) %></a>
