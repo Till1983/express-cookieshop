@@ -11,9 +11,9 @@ app.use(logger)
 app.use('/assets', express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
-const cookieOfferings = [
+const cookies = [
     { name: 'Chocolate Chip', slug: 'chocolate-chip', description: 'A tasty, sugary cookie, filled with chocolate chips', priceInCents: 350, isInStock: true},
-    { name: 'Banana', slug: 'banana', priceInCents: 300, isInStock: false}
+    { name: 'Banana', slug: 'banana', description: 'A cookie with wonderful banana flavour',priceInCents: 300, isInStock: true}
 ]
 
 app.get('/', (request, response) => {
@@ -55,15 +55,25 @@ app.get('/calculate', (request, response) => {
 app.get('/cookies', (request,response) => {
     console.log(request.query)
     response.render('cookies/index', { 
-        cookieOfferings: cookieOfferings,
+        cookies: cookies,
         readablePrice: readablePrice 
     })
 })
 
 app.get('/cookies/:slug', (request, response) => {
-    const cookiesId = request.params.slug
-    response.send(`<h3>You chose the cookie with the ID ${cookiesId}.</h3>`)
-})
+    const cookiesSlug = request.params.slug;
+    const cookieOffering = cookies.find(cookie => cookie.slug === cookiesSlug);
+
+    if (cookieOffering) {
+        response.render('cookies/cookie-detail', {
+            cookie: cookieOffering,
+            readablePrice: readablePrice
+        });
+    } else {
+        response.status(404).send('Cookie not found');
+    }
+});
+
 
 export { app }
 

@@ -7,12 +7,12 @@
     <main>
       <p>Our current offering:</p>
       <ul>
-        <% cookieOfferings.forEach(offering => { %>
+        <% cookies.forEach(cookie => { %>
           <li>
-            <% if(offering.isInStock) { %> 
-              <a href="/cookies/<%= offering.slug %>"><%= offering.name %>: <%= readablePrice(offering.priceInCents) %></a>
+            <% if(cookie.isInStock) { %> 
+              <a href="/cookies/<%= cookie.slug %>"><%= cookie.name %>: <%= readablePrice(cookie.priceInCents) %></a>
             <% } else { %>
-              <%= offering.name %> [SOLD OUT] 
+              <%= cookie.name %> [SOLD OUT] 
             <% } %>
           </li>
         <% }) %>
