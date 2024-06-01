@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/head', {title: 'Shop | Cookieshop'}) %>
+<body>
+    <%- include('../includes/header') %>
+
+    <main>
+        <h2><%= cookie.name %></h2>
+        <p><%= cookie.description %> </p>
+        <p>Price: <%= readablePrice(cookie.priceInCents) %></p>
+    </main>
+
+    <%- include('../includes/footer') %>
+</body>
+</html>
