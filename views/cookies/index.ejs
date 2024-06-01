@@ -4,13 +4,17 @@
 <body>
     <%- include('../includes/header') %>
 
-  <main>
-    <p>Our current offering:</p>
-    <ul>
-      <li><a href="/cookies/chocolate-chip">Chocolate Chip</a></li>
-      <li><a href="/cookies/banana">Banana</a></li>
-    </ul>
-  </main>
+    <main>
+      <p>Our current offering:</p>
+      <ul>
+        <% cookieOffering.forEach(offering => { %>
+          <li>
+            <a href="/cookies/<%= offering.slug %>"><%= offering.name %></a>
+            <% if(!offering.isInStock) { %> [SOLD OUT] <% } %> 
+          </li>
+        <% }) %>
+      </ul>
+    </main>
 
   <%- include('../includes/footer') %>
 </body>
