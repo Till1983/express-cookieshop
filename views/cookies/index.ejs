@@ -9,8 +9,11 @@
       <ul>
         <% cookieOffering.forEach(offering => { %>
           <li>
-            <a href="/cookies/<%= offering.slug %>"><%= offering.name %></a>
-            <% if(!offering.isInStock) { %> [SOLD OUT] <% } %> 
+            <% if(offering.isInStock) { %> 
+              <a href="/cookies/<%= offering.slug %>"><%= offering.name %>: <%= readablePrice(offering.priceInCents) %></a>
+            <% } else { %>
+              <%= offering.name %> [SOLD OUT] 
+            <% } %>
           </li>
         <% }) %>
       </ul>
