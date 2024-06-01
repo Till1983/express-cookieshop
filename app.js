@@ -1,5 +1,6 @@
 import express, { request, response } from 'express'
 import { logger } from './middlewares/logger.js'
+import { readablePrice } from './helpers/cookie-views.js'
 
 const app = express()
 const PORT = 3000
@@ -10,9 +11,9 @@ app.use(logger)
 app.use('/assets', express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
-const cookieOffering = [
-    { name: 'Chocolate Chip', slug: 'chocolate-chip', isInStock: true},
-    { name: 'Banana', slug: 'banana', isInStock: false}
+const cookieOfferings = [
+    { name: 'Chocolate Chip', slug: 'chocolate-chip', description: 'A tasty, sugary cookie, filled with chocolate chips', priceInCents: 350, isInStock: true},
+    { name: 'Banana', slug: 'banana', priceInCents: 300, isInStock: false}
 ]
 
 app.get('/', (request, response) => {
@@ -53,7 +54,10 @@ app.get('/calculate', (request, response) => {
 
 app.get('/cookies', (request,response) => {
     console.log(request.query)
-    response.render('cookies/index', { cookieOffering: cookieOffering })
+    response.render('cookies/index', { 
+        cookieOfferings: cookieOfferings,
+        readablePrice: readablePrice 
+    })
 })
 
 app.get('/cookies/:slug', (request, response) => {
