@@ -1,6 +1,8 @@
 import { expect } from 'chai';
 import request from 'supertest';
 import { app } from '../app.js';
+import { Cookie } from '../models/cookies.js';
+
 
 describe('GET /', () => {
   it('should render the index page with "Welcome to my cookieshop."', async () => {
@@ -64,8 +66,15 @@ describe('GET /cookies', () => {
   it('should render the cookies page', async () => {
     const response = await request(app).get('/cookies');
     expect(response.status).to.equal(200);
-    // Assuming the cookies/index.ejs has some specific content
     expect(response.text).to.contain('Our current offering:'); 
+  });
+});
+
+describe('GET /cookies/new', () => {
+  it('should render the new cookie form page', async () => {
+    const response = await request(app).get('/cookies/new');
+    expect(response.status).to.equal(200);
+    expect(response.text).to.contain('Create a new cookie');
   });
 });
 
