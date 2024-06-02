@@ -1,6 +1,7 @@
 import express, { request, response } from 'express'
 import { logger } from './middlewares/logger.js'
 import { readablePrice } from './helpers/cookie-views.js'
+import { Cookie } from './models/cookies.js'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 
@@ -69,6 +70,10 @@ app.get('/cookies', (request,response) => {
     })
 })
 
+app.get('/cookies/new', (request, response) => {
+    response.render('cookies/new')
+  })
+
 app.get('/cookies/:slug', (request, response) => {
     const cookiesSlug = request.params.slug;
     const cookieOffering = cookies.find(cookie => cookie.slug === cookiesSlug);
@@ -81,7 +86,24 @@ app.get('/cookies/:slug', (request, response) => {
     } else {
         response.status(404).send('Cookie not found');
     }
-});
+})
+
+app.post('/create-cookie', async (request, response) => {
+    try {
+      const cookie = new Cookie({
+        slug: request.body.slug,
+        name: request.body.name,
+        description: request.body.description,
+        priceInCents: request.body.priceInCents
+      })
+      await cookie.save()
+  
+      response.send('Cookie Created')
+    }catch (error) {
+      console.error(error)
+      response.send('Error: The cookie could not be created.')
+    }
+  })
 
 
 export { app }
